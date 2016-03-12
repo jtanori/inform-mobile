@@ -1,0 +1,16 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4",
+    "ngCordova": "~0.1.19-alpha"
+  },
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "lodash": "~3.10.1",
+    "ionic-rating": "~0.1.0",
+    "ng-img-crop": "ngImgCrop#~0.3.2",
+    "moment": "momentjs#~2.11.2",
+    "angular-ui-calendar": "^1.0.1"
+  }
+}

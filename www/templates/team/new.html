@@ -1,0 +1,40 @@
+<ion-view title="Add New Team" id="team-new">
+    <ion-nav-buttons side="left">
+        <a ui-sref="app.home" class="button button-icon ion-ios-arrow-back"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-chatbubble-outline"></button>
+        <button class="button button-icon button-clear ion-ios-bell-outline"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form ng-submit="create(newTeamForm)" name="newTeamForm" class="padding-vertical">
+            <div class="section text-center">
+                <div class="padding text-center file-input" ng-click="selectCrest()" ng-if="!team.crest">
+                    <img src="img/icon-outline.png" class="teams-icon">
+                    <p class="text-stable">Upload Team.<br />Crest</p>
+                    <input type="file" ng-model="team.crest" />
+                </div>
+                <div ng-if="team.crest" class="padding text-center file-input loaded" id="team-new-crest" ng-click="selectCrest()">
+                    <img src="{{team.crest}}" />
+                </div>
+            </div>
+            <br />
+            <div class="padding">
+                <div class="input">
+                    <input type="text" ng-model="team.name" placeholder="Team Name" required min-length="3">
+                </div>
+                <div class="input">
+                    <textarea ng-model="team.description" required placeholder="Description" cols="6" min-length="10"></textarea>
+                    <span class="help-label">You can specify team rules or slogan here (10 chars minimum)</span>
+                </div>
+                <div class="input">
+                    <input type="text" ng-model="team.coach" placeholder="Coach (Tap to search)">
+                    <span class="help-label">Optional</span>
+                </div>
+            </div>
+            <div class="fixed-form-button hide-on-keyboard-open">
+                <button class="button button-full button-energized" type="submit" ng-disabled="!valid(newTeamForm)">Create Team</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+<ion-view view-title="Players">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left" ng-class="{'ion-close-round': isOpenLeft(), 'ion-navicon': !isOpenLeft()}">
+        </button>
+    </ion-nav-buttons>
+
+    <form class="bar bar-subheader item-input-inset bar-positive" name="searchForm" ng-submit="submit(searchForm)" ng-disabled="!categories.length || newBusinessMarker">
+		<i ng-show="query && query.length > 2" ng-click="clearSearch()" class="clear-search icon ion-ios-close close" id="home-search-clear"></i>
+		<label class="item-input-wrapper" id="home-search-box">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="search" placeholder="Search Players" autocomplete="false" autocorrect="false" ng-model="query" ng-focus="isSearchFocused = true" ng-blur="isSearchFocused = false" ng-change="filterCategories()" ng-model-options="{ debounce: 350 }" id="home-search-input">
+		</label>
+	</form>
+
+    <ion-content>
+        
+    </ion-content>
+</ion-view>

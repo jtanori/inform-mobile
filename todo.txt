@@ -1,0 +1,17 @@
+- View team
+- View game
+- Edit team
+- Game features (info, roll call, formation)
+- Add calendar
+- Select address from dropdown
+
+* Add scroll to game and teams container in home
+* Activate geolocation in map
+* Fix background color in all views
+* Manager and player switch in sidemenu
+* Player and manager login enabled for all accounts
+* Save opponents as my fav teams, make easy to pickup
+* Setup new team when creating new game (as fav team)
+
+
+*** Ask for position and how many kms you can move to appear in the search results

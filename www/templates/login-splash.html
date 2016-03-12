@@ -1,0 +1,26 @@
+<ion-view>
+    <ion-content id="splash">
+        <div>
+            <img src="img/logo-shadow.png" id="splash-logo">
+        </div>
+        <form id="splash-form">
+            <h5 class="text-center stable">Register as</h5>
+            <div class="row">
+                <div class="col">
+                    <a ui-sref="signup({as: 'Manager'})">
+                        <img src="img/manager.png" class="full-image">
+                    </a>
+                </div>
+                <div class="col">
+                    <a ui-sref="signup({as: 'Player'})">
+                        <img src="img/player.png" class="full-image">
+                    </a>
+                </div>
+            </div>
+        </form>
+        <div id="splash-login-button">
+            <h5 class='text-center stable'>Already have an account?</h5>
+            <a class="button-full button button-energized" ui-sref="login">Log In</a>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,19 @@
+<ion-view view-title="Settings">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left" ng-class="{'ion-close-round': isOpenLeft(), 'ion-navicon': !isOpenLeft()}">
+        </button>
+    </ion-nav-buttons>
+    
+    <ion-content>
+        <div class="padding">
+            <h3>Notifications</h3>
+        </div>
+        <ion-list>
+            <ion-toggle ng-model="settings.notifications.lineup" toggle-class="toggle-calm">Line Up Confirmation</ion-toggle>
+            <ion-toggle ng-model="settings.notifications.match" toggle-class="toggle-calm">Match Notification</ion-toggle>
+            <ion-toggle ng-model="settings.notifications.event" toggle-class="toggle-calm">Event Notification</ion-toggle>
+            <ion-toggle ng-model="settings.notifications.final" toggle-class="toggle-calm">Final Result Notification</ion-toggle>
+            <ion-toggle ng-model="settings.notifications.inbox" toggle-class="toggle-calm">Inbox Message</ion-toggle>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view view-title="Log In as a Player" class="positive">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-buttons side="left">
+            <a href="#/login" class="button button-icon ion-ios-arrow-back"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <form ng-submit="doLogin()">
+            <div class="padding">
+                <h4 class="text-center dark">Via e-mail</h4>
+
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <span class="input-label">E-mail</span>
+                        <input type="text" ng-model="loginData.username">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="loginData.password">
+                    </label>
+                </div>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-energized" type="submit">Log in</button>
+            </div>
+        </form>
+
+        <br />
+        <h4 class="text-center dark">Or Use Social Accounts</h4>
+        <div class="padding">
+            <button class="button button-block facebook-bg light" type="submit">Facebook</button>
+            <button class="button button-block googleplus-bg light" type="submit">Google+</button>
+        </div>
+
+        <h4 class="text-center calm">Don't Have an Account? Sign Up</h4>
+        <div class="padding">
+            <button class="button button-block button-light" type="submit">Sign Up</button>
+        </div>
+    </ion-content>
+</ion-view>

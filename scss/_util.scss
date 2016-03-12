@@ -1,0 +1,62 @@
+.googleplus, a.googleplus {
+  color: $googleplus;
+}
+.googleplus-bg {
+  background-color: $googleplus;
+}
+.googleplus-border {
+  border-color: darken($googleplus, 20%);
+}
+
+.facebook, a.facebook {
+  color: $facebook;
+}
+.facebook-bg {
+  background-color: $facebook;
+}
+.facebook-border {
+  border-color: darken($facebook, 20%);
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-padding-horizontal {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.no-padding-right {
+    padding-right: 0;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+
+.margin-bottom {
+    margin-bottom: 1rem;
+}
+
+.col-30 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 30%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 30%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
+    max-width: 30%;
+}

@@ -1,0 +1,161 @@
+<ion-view>
+    <ion-nav-title>
+      <img src="img/logo-small-simple.png">
+    </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left" ng-class="{'ion-close-round': isOpenLeft(), 'ion-navicon': !isOpenLeft()}">
+        </button>
+    </ion-nav-buttons>
+
+    <form class="bar bar-subheader item-input-inset bar-positive" name="searchForm" ng-submit="submit(searchForm)">
+		<label class="item-input-wrapper" id="home-search-box">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="search" placeholder="Search teams and players" autocomplete="false" autocorrect="false" ng-model="query" ng-change="submit(searchForn)" ng-model-options="{ debounce: 350 }" id="home-search-input">
+		</label>
+	</form>
+    <ion-content class="has-subheader has-footer" scroll="false">
+        <div ng-if="role == 'manager'" id="home-manager">
+            <div class="section">
+                <div class="row bar-section bar">
+                    <div class="col">
+                        My Teams
+                    </div>
+                    <div class="col text-right">
+                        <a ui-sref="app.addTeam()">+ Add Team</a>
+                    </div>
+                </div>
+                <ion-content class="has-header" padding="true">
+                    <div class="padding text-center section-content" ng-if="!loadingTeams && !teams.length">
+                        <img src="img/icon-outline.png" class="teams-icon">
+                        <p class="text-stable">No teams here yet.<br />Create a dream team!</p>
+                    </div>
+                    <div class="padding text-center section-content" ng-if="loadingTeams">
+                        <ion-spinner></ion-spinner>
+                        <div>Loading Teams...</div>
+                    </div>
+                    <ion-list ng-if="!loadingTeams && teams.length" id="home-teams">
+                        <div ng-repeat="t in teams" class="item text-center item-game-listing">
+                            <div class="row team-preview">
+                                <div class="col-20" ui-sref="app.team({id: t.objectId})">
+                                    <img src="{{t.crest.url}}" />
+                                </div>
+                                <div class="col-50 text-left" ui-sref="app.team({id: t.objectId})">
+                                    <div class="padding"><h2 class="name positive">{{t.name}}</h2></div>
+                                </div>
+                                <div class="col-30 text-right" ng-click="t.expanded = !t.expanded">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            4
+                                            <i class="icon ion-person"></i>
+                                        </div>
+                                        <div class="col text-center">
+                                            <i class="icon ion-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="t.expanded" class="info">
+                                <div ng-if="t.players">
+                                    <div class="row">
+                                        <div class="col">
+                                            Players
+                                        </div>
+                                        <div class="col">
+                                            <a ui-sref="app.teamPlayers({id: t.objectId})">Edit Players</a>
+                                        </div>
+                                    </div>
+                                    <div ng-repeat="p in t.players" class="row">
+                                        <div class="col-25">
+                                            avatar
+                                        </div>
+                                        <div class="col-50">
+                                            info
+                                        </div>
+                                        <div class="col-25">
+                                            position
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="!t.players" class="text-center">
+                                    <ion-spinner></ion-spinner>
+                                    <div>Loading Players...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-list>
+                </ion-content>
+            </div>
+            <div class="section" ng-class="{disabled: !teams.length, 'disable-pointer-events': !teams.length}">
+                <div class="row bar-section bar">
+                    <div class="col">
+                        Upcoming Games
+                    </div>
+                    <div class="col text-right">
+                        <a ui-sref="app.addGame()">+ New Game</a>
+                    </div>
+                </div>
+                <ion-content class="has-header padding-horizontal" padding="true">
+                    <div class="padding text-center section-content" ng-if="!loadingGames && !teams.length">
+                        <p class="text-stable">To start a game create your team<br />and invite someone to play!</p>
+                    </div>
+                    <div class="padding text-center section-content" ng-if="!loadingGames && teams.length && !games.length">
+                        <p class="text-stable">You have no upcoming games<br />create one and invite someone to play!</p>
+                    </div>
+                    <div class="padding text-center section-content" ng-if="loadingGames">
+                        <ion-spinner></ion-spinner>
+                        <div>Loading Upcoming Games...</div>
+                    </div>
+                    <ion-list ng-if="!loadingGames && games.length" id="home-games">
+                        <div ng-repeat="g in games" class="item row text-center item-game-listing" ui-sref="app.game({id: g.objectId})">
+                            <div class="col">
+                                <img src="{{g.challenger.crest.url}}" />
+                                <div class="name positive">{{g.challenger.name}}</div>
+                            </div>
+                            <div class="col">
+                                <h3 class='positive'>VS</h3>
+                                <div>{{g.displayDate}}</div>
+                                <div>{{g.home === 1 ? 'Home' : 'Guest'}}, {{g.lineup}}v{{g.lineup}}</div>
+                            </div>
+                            <div class="col">
+                                <img src="{{g.opponent.crest.url}}" />
+                                <div class="name positive">{{g.opponent.name}}</div>
+                            </div>
+                        </div>
+                    </ion-list>
+                </ion-content>
+            </div>
+        </div>
+        <div ng-if="role == 'player'" id="home-player">
+            <div class="section">
+                <div class="row bar-section">
+                    <div class="col">
+                        My Teams
+                    </div>
+                    <div class="col text-right">
+                        <a ui-sref="app.addTeam()">+ Join Team</a>
+                    </div>
+                </div>
+                <div class="padding text-center section-content">
+                    <img src="img/icon-ball-outline.png" class="teams-icon">
+                    <p class="text-stable">No teams here yet.<br />Join a dream team!</p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="row bar-section">
+                    <div class="col">
+                        Upcoming Games
+                    </div>
+                    <div class="col text-right">
+                    </div>
+                </div>
+                <div class="padding text-center section-content">
+                    <p class="text-stable">Join a team and upcoming<br />games will appear here!</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-energized hide-on-keyboard-open">
+        <button class="button button-full button-energized no-margin" type="button" ng-click="invitePlayer()">Invite Player</button>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,36 @@
+/* Empty. Add your own CSS if you like */
+#splash {
+    background: url("../img/splash-bg.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+#splash-logo {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    margin-top: -2rem;
+}
+
+#splash-form {
+    margin-top: -3rem;
+}
+
+#splash-form h5,
+#splash-login-button h5 {
+    opacity: 0.5;
+}
+
+#splash-login-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#splash-login-button button {
+    margin-bottom: 0;
+}
+
+#splash-login-button button:after {
+    bottom: 0;
+}

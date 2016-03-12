@@ -1,0 +1,72 @@
+<ion-view view-title="John Smith">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left" ng-class="{'ion-close-round': isOpenLeft(), 'ion-navicon': !isOpenLeft()}">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="positive-bg light text-center">
+            <div id="profile-avatar">
+                <img src="img/avatar-default.png" />
+            </div>
+            <ion-scroll direction="x" id="profile-medals" delegate-handle="awardsScroll">
+                <div class="row">
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/defender.png" class="full-image" />
+                        </div>
+                        <div>Great Defender</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/goal-keeper.png" class="full-image" />
+                        </div>
+                        <div>Great Goalkeeper</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/midfield.png" class="full-image" />
+                        </div>
+                        <div>Great Midfield</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/mvp.png" class="full-image" />
+                        </div>
+                        <div>Player of the Match</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/player-maker.png" class="full-image" />
+                        </div>
+                        <div>Great Playermaker</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/sportsmanship.png" class="full-image" />
+                        </div>
+                        <div>Great Sportsmanship</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/striker.png" class="full-image" />
+                        </div>
+                        <div>Great Striker</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/teamplayer.png" class="full-image" />
+                        </div>
+                        <div>Great Teamplayer</div>
+                    </div>
+                    <div class="col-25">
+                        <div class="padding-horizontal">
+                            <img src="img/awards/winger.png" class="full-image" />
+                        </div>
+                        <div>Great Winger</div>
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-view>

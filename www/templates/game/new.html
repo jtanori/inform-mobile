@@ -1,0 +1,127 @@
+<ion-view title="Set Up a Game" id="team-new">
+    <ion-nav-buttons side="left">
+        <a ui-sref="app.home" class="button button-icon ion-ios-arrow-back"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-chatbubble-outline"></button>
+        <button class="button button-icon button-clear ion-ios-bell-outline"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="newGameForm" class="padding-vertical">
+            <div class="padding">
+                <div class="input" ng-if="teams.length > 1">
+                    <select ng-model="challenger" class="light-bg" ng-change="setChallenger(challenger)" id="new-game-challenger-select">
+                        <option value="">Select Challenger Team</option>
+                        <option ng-repeat="t in teams" value="{{t.objectId}}">{{t.name}}</option>
+                    </select>
+                </div>
+                <ion-list class="list-inset" ng-if="game.challenger" id="home-challenger-list">
+                    <ion-item class="item item-avatar item-avatar-left item-icon-right" ng-class="{'item-icon-right': teams.legth > 1}">
+                        <img src="{{game.challenger.crest.url}}" />
+                        <h2>{{game.challenger.name}}</h2>
+                        <p>{{game.challenger.description}}</p>
+                    </ion-item>
+                </ion-list>
+                <div class="input" ng-if="opponents.length">
+                    <select ng-model="opponent" class="light-bg" ng-change="setOpponent(opponent)" id="new-game-opponent-select">
+                        <option value="">Select opponent</option>
+                        <option ng-repeat="t in opponents" value="{{t.objectId}}">{{t.name}}</option>
+                    </select>
+                </div>
+                <ion-list class="list-inset" ng-if="game.opponent">
+                    <ion-item class="item item-avatar item-avatar-left">
+                        <img src="{{game.opponent.crest.url}}" />
+                        <h2>{{game.opponent.name}}</h2>
+                        <p>{{game.opponent.description}}</p>
+                    </ion-item>
+                </ion-list>
+                <div class="input">
+                    <button type="button" ui-sref="app.addOpponent({as: 'opponent'})" class="button button-light button-block button-small">Setup new opponent team</button>
+                </div>
+                <div class="row no-padding-horizontal">
+                    <div class="col input no-padding-left">
+                        <select ng-model="game.tournament" class="light-bg">
+                            <option value="tournament" selected>Tournament</option>
+                            <option value="trainig">Training</option>
+                            <option value="skirmish">Skirmish</option>
+                        </select>
+                    </div>
+                    <div class="col input no-padding-right">
+                        <select ng-model="game.lineup" class="light-bg">
+                            <option value="">Team Size</option>
+                            <option value="11">11v11</option>
+                            <option value="10">10v10</option>
+                            <option value="9">9v9</option>
+                            <option value="8">8v8</option>
+                            <option value="7">7v7</option>
+                            <option value="6">6v6</option>
+                            <option value="5">5v5</option>
+                            <option value="5">4v4</option>
+                            <option value="5">3v3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row no-padding-horizontal">
+                    <div class="col-60">
+                        <div class="input">
+                            <input type="text" ng-model="game.date" placeholder="Pick a date" required  class="light-bg" ng-click="pickADate()">
+                        </div>
+                    </div>
+                    <div class="20">
+                        <div class="padding-left">
+                            <div class="input">
+                                <input type="number" ng-model="game.hour" min="1" max="12" placeholder="12" required class="text-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="20">
+                        <div class="padding-left">
+                            <div class="input">
+                                <input type="number" ng-model="game.minute" min="0" max="59" placeholder="00" required class="text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input input-w-button input-w-button-right">
+                    <button type="button" class="button button-clear icon ion-navigate" ng-click="getPosition()"></button>
+                    <input type="text" ng-model="game.address" placeholder="Location (Address)" required ng-change="geocode(game.address)" ng-model-options="{ debounce: 1000 }">
+                </div>
+                <div id="new-game-location">
+
+                </div>
+
+                <div class="row no-padding-horizontal">
+                    <div class="col-50 input no-padding-left">
+                        <div class="padding-right">
+                            <select ng-model="game.fieldType" class="light-bg">
+                                <option value="">Field Type</option>
+                                <option value="turf">Turf</option>
+                                <option value="grass">Grass</option>
+                                <option value="futsand">Futsand</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-50 input no-padding-right">
+                        <div class="padding-left">
+                            <select ng-model="game.home" class="light-bg">
+                                <option value="home" selected>Home</option>
+                                <option value="guest">Guest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <input type="text" ng-model="game.instructions" placeholder="Instructions">
+                </div>
+            </div>
+            <div class="no-padding">
+
+            </div>
+        </form>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-energized hide-on-keyboard-open">
+        <button class="button button-full button-energized no-margin" type="submit" ng-click="save()">Create Game</button>
+    </ion-footer-bar>
+</ion-view>

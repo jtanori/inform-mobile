@@ -1,0 +1,60 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <div ng-if="isOpenLeft()" class="closer left" ng-click="closeLeft()"><button type="button" class="button button-clear button-icon ion-close"></button></div>
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive" align-title="center">
+            <!--ion-nav-back-button>
+            </ion-nav-back-button-->
+
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-ios-chatbubble-outline"></button>
+                <button class="button button-icon button-clear ion-ios-bell-outline"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" id="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" id="drawer" ng-class="{'menu-active': isOpenLeft()}">
+        <ion-content class="has-header bg-positive">
+            <div class="padding-horizontal">
+                <div class="row">
+                    <div class="col col-33" id="drawer-avatar">
+                        <img src="img/avatar-default.png" class="full-image">
+                    </div>
+                    <div class="col col-67" id="drawer-profile">
+                        <h5 class="light">Alex</h5>
+                        <h5 class="light">Ferguson</h5>
+                        <a href="#" class="light">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <ion-list class="light list">
+                <ion-item menu-close ui-sref="app.home">
+                    Teams
+                </ion-item>
+                <ion-item menu-close ui-sref="app.players" ng-if="role == 'manager'">
+                    Players
+                </ion-item>
+                <ion-item menu-close ui-sref="app.settings">
+                    Settings
+                </ion-item>
+                <ion-item menu-close ui-sref="app.profile">
+                    Profile
+                </ion-item>
+                <ion-item menu-close ui-sref="app.about">
+                    About
+                </ion-item>
+                <ion-item menu-close ng-click="switch()" class="disabled" ng-disabled="true">
+                    <i class="icon ion-arrow-swap"></i> View as <span ng-if="role == 'manager'">Player</span><span ng-if="role == 'player'">Manager</span>
+                </ion-item>
+            </ion-list>
+            <div class="padding">
+                <hr />
+            </div>
+            <ion-list class="light list">
+                <ion-item menu-close ng-click="logout()">
+                    Log Out
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
